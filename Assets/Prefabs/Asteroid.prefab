@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1282498237837209667}
   - component: {fileID: 3973088523027374012}
   - component: {fileID: 6662453811737862938}
-  - component: {fileID: 7165053847517085039}
+  - component: {fileID: 5617632785592516609}
   m_Layer: 0
-  m_Name: 1asteroid
-  m_TagString: Untagged
+  m_Name: Asteroid
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7165053847517085039
+--- !u!114 &5617632785592516609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,3 +133,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c0e634d53c6a04db303487e370d184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 7
