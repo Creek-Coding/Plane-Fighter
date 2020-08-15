@@ -41,6 +41,15 @@ public class PlayerScript : MonoBehaviour
         got_hit = true;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Boost")
+        {
+            BoostHit(collision.gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
+
     void Move()
     {
         Vector3 movement = new Vector3();
@@ -68,11 +77,32 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    void BoostHit(GameObject boost)
+    {
+        switch (boost.name)
+        {
+            case "health_powerup(Clone)":
+                lives++;
+                Debug.Log(lives);
+                break;
+            case "speed_boost(Clone)":
+                maxSpeed += 21/maxSpeed;
+                break;
+            case "spread_shot(Clone)":
+                Debug.Log("BOOM");
+                break;
+            default:
+                Debug.Log(boost.name);
+                break;
+        }
+    }
+
     void PlayerHealth()
     {
         if (got_hit)
         {
             lives -= 1;
+            maxSpeed = 7;
             transform.position = respawn_point.position;
             got_hit = false;
         }
