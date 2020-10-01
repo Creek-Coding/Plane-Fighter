@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidCreation : MonoBehaviour
+public class BoostSpawnerScript : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject healthboost;
+
+    [SerializeField]
+    private GameObject speedboost;
+
+    [SerializeField]
+    private GameObject coneshot;
+
     float cooldowntimer = 0f;
-    float respawntime = 0.5f;
-    public GameObject asteroidPrefab;
+    float respawntime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +25,18 @@ public class AsteroidCreation : MonoBehaviour
     void Update()
     {
         SpawnRNG();
+    }
+
+    GameObject BoostSelector()
+    {
+        List<GameObject> boosts = new List<GameObject>();
+        boosts.Add(healthboost);
+        boosts.Add(speedboost);
+        boosts.Add(coneshot);
+
+        int number = Random.Range(0, boosts.Count);
+
+        return boosts[number];
     }
 
     void SpawnRNG()
@@ -30,10 +50,10 @@ public class AsteroidCreation : MonoBehaviour
 
             spawnarea.x += number;
 
-            Instantiate(asteroidPrefab, spawnarea, Quaternion.identity);
+            Instantiate(BoostSelector(), spawnarea, Quaternion.identity);
 
             cooldowntimer = respawntime;
         }
-        
+
     }
 }
